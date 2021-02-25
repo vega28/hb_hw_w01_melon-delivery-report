@@ -1,13 +1,14 @@
 def delivery_info(delivery_file):
-    """ take in one day's melon delivery log and print a summary to the screen """
+    """ Take in one day's melon delivery log and print a summary to the screen. 
+    
+    This function opens the specified file, parses the relevant information from 
+    each line, and generates a summary that is printed to the screen. """
     the_file = open(delivery_file)
     for line in the_file:
         line = line.rstrip()
         words = line.split('|')
 
-        melon = words[0]
-        count = words[1]    # original file had an error here - index was set to 0
-        amount = words[2]   # original file had an error here - index was set to 0
+        melon, count, amount = words    # unpack the list into specific variables
 
         print(f'Delivered {count} {melon}s for total of ${amount}')
     the_file.close()
